@@ -1,0 +1,1 @@
+ALTER TABLE public.users_courses ADD CONSTRAINT fk_courses FOREIGN KEY (course_id) REFERENCES public.courses(id);

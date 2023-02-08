@@ -1,0 +1,19 @@
+spring:
+  # flyway:
+  #   locations:
+  #   - "classpath:db/migration/mysql"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://host.docker.internal:3306/msvc_users?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
+    username: ecommerceapp
+    password: ecommerceapp
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+server:
+  port: 8001
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug

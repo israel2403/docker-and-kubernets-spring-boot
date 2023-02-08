@@ -1,0 +1,23 @@
+spring:
+  flyway:
+    locations:
+    - "classpath:db/migration/common"
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: false
+    show-sql: true
+    properties:
+      dialect: H2Dialect
+      format_sql: true
+logging:
+  level:
+    org:
+      hibernate:
+        sql: info
