@@ -134,7 +134,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>8.2.0</version>
 				<configuration>
-					<url>jdbc:mysql://localhost:3306/msvc_users</url>
+					<url>jdbc:mysql://mysql8:3308/msvc_users</url>
 					<user>ecommerceapp</user>
 					<password>ecommerceapp</password>
 				</configuration>

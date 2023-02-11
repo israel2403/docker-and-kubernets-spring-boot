@@ -4,7 +4,7 @@ spring:
   #   - "classpath:db/migration/mysql"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://host.docker.internal:3306/msvc_users?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://mysql8:3308/msvc_users?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
     username: ecommerceapp
     password: ecommerceapp
   jpa:
