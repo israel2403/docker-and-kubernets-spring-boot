@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mysqldb8:
+    image: mysql:8
+    container_name: mysql8
+    networks:
+      - spring-school
+    environment:
+      - MYSQL_USER=ecommerceapp
+      - MYSQL_PASSWORD=ecommerceapp
+      - MYSQL_DATABASE=msvc_users
+      - MYSQL_ROOT_PASSWORD=240395
+    volumes:
+      - $PWD/volumes/mysql8:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    restart: unless-stopped
+  school-app:
+    build: ./msvc-users
+    container_name: spring-school
+    ports:
+      - 8001:8001
+    networks:
+      - spring-school
+    depends_on:
+      - mysqldb8
+    environment:
+      - MYSQL_HOST=mysql8
+      - MYSQL_USERNAME=ecommerceapp
+      - MYSQL_PASSWORD=ecommerceapp
+      - MYSQL_DATABASE=msvc_users
+      - MYSQL_PORT=3306
+      - MYSQL_ROOT_PASSWORD=240395
+networks:
+  spring-school:
+    name: spring-school
