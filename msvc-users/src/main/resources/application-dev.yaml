@@ -19,3 +19,6 @@ logging:
     org:
       hibernate:
         SQL: debug
+msvc:
+  courses:
+    url: ${COURSES_URL:msvc-courses:8002/courses2}

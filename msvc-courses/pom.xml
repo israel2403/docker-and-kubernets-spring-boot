@@ -82,9 +82,10 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>8.2.0</version>
 				<configuration>
-					<url>jdbc:postgresql://postgresql14:5433/msvc_courses</url>
-					<user>baeldung</user>
-					<password>baeldung</password>
+					<url>
+						jdbc:postgresql://${env.POSTGRES_HOST}:${env.POSTGRES_PORT}/${env.POSTGRES_DATABASE}</url>
+					<user>${env.POSTGRES_USER}</user>
+					<password>${env.POSTGRES_PASSWORD}</password>
 				</configuration>
 				<!-- <dependencies>
 					<dependency>

@@ -1,6 +1,20 @@
 version: '3.8'
 
 services:
+  postresqldb14:
+    image: postgres:14-alpine
+    container_name: postresql14
+    networks:
+      - spring-school
+    environment:
+      - POSTGRES_PASSWORD=baeldung
+      - POSTGRES_USER=baeldung
+      - POSTGRES_DB=msvc_courses
+    volumes:
+      - $PWD/volumes/postresql14:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
   mysqldb8:
     image: mysql:8
     container_name: mysql8
@@ -16,22 +30,36 @@ services:
     ports:
       - "3308:3306"
     restart: unless-stopped
-  school-app:
-    build: ./msvc-users
-    container_name: spring-school
+  msvc-courses:
+    #   solution 1
+    #   build: ./msvc-courses
+    #   solution 2
+    #   build:
+    #     context: ./
+    #     dockerfile: ./msvc-courses/Dockerfile
+    #   solution 3
+    image: israelhf24/courses:latest
+    container_name: spring-school-courses
     ports:
-      - 8001:8001
+      - 8002:8002
+    networks:
+      - spring-school
+    depends_on:
+      - postresqldb14
+    env_file: ./msvc-courses/.env
+  msvc-users:
+    # Solution 1
+    # build: ./msvc-users
+    # Solution 2
+    image: israelhf24/users:latest
+    container_name: spring-school-users
+    ports:
+      - "8001:8001"
     networks:
       - spring-school
     depends_on:
       - mysqldb8
-    environment:
-      - MYSQL_HOST=mysql8
-      - MYSQL_USERNAME=ecommerceapp
-      - MYSQL_PASSWORD=ecommerceapp
-      - MYSQL_DATABASE=msvc_users
-      - MYSQL_PORT=3306
-      - MYSQL_ROOT_PASSWORD=240395
+    env_file: ./msvc-users/.env
 networks:
   spring-school:
     name: spring-school

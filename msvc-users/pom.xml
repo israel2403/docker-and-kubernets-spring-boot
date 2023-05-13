@@ -135,8 +135,8 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>8.2.0</version>
 				<configuration>
-					<url>jdbc:mysql://${env.MYSQL_HOST}:3306/${env.MYSQL_DATABASE}</url>
-					<user>${env.MYSQL_USER}</user>
+					<url>jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/${env.MYSQL_DATABASE}</url>
+					<user>${env.MYSQL_USERNAME}</user>
 					<password>${env.MYSQL_PASSWORD}</password>
 				</configuration>
 				<dependencies>

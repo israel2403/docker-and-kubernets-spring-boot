@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgresql14:5433/msvc_courses
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DATABASE}
     username: baeldung
     password: baeldung
   jpa:
@@ -21,3 +21,7 @@ logging:
     org:
       hibernate:
         SQL: debug
+
+msvc:
+  users:
+    url: ${USERS_URL:msvc-users:8001/users}
